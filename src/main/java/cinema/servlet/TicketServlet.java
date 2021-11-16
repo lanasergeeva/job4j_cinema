@@ -28,6 +28,8 @@ public class TicketServlet extends HttpServlet {
         Ticket ticket = GSON.fromJson(req.getReader(), Ticket.class);
         User user = (User) req.getSession().getAttribute("user");
         Movie movie = (Movie) req.getSession().getAttribute("movie");
+        System.out.println(user);
+        System.out.println(movie);
         ticket.setMovie(movie);
         ticket.setUser(user);
         PsqlStore.instOf().add(ticket);

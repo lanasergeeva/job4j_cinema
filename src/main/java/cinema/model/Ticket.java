@@ -22,6 +22,17 @@ public class Ticket {
         this.user = user;
     }
 
+    public Ticket(int row, int cell) {
+        this.row = row;
+        this.cell = cell;
+    }
+
+    public Ticket(int id, int row, int cell) {
+        this.id = id;
+        this.row = row;
+        this.cell = cell;
+    }
+
     public int getId() {
         return id;
     }
@@ -60,5 +71,14 @@ public class Ticket {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    @Override
+    public String toString() {
+        return "Ticket{"
+                + "id=" + id
+                + ", row=" + row
+                + ", cell=" + cell
+                + '}';
     }
 }

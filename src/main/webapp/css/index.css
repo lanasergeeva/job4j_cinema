@@ -1,0 +1,238 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: cursive;
+    background-color: hsl(235, 21%, 11%);
+    font-size: 18px;
+    display: flex;
+    justify-content: center;
+}
+
+.background-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    max-height: 350px;
+    z-index: -1;
+}
+
+.background-image img {
+    width: 100%;
+    object-fit: cover;
+    min-height: 350px;
+    object-position: left;
+}
+
+.container {
+    width: 100%;
+    max-width: 700px;
+    margin: 0px 30px;
+    margin-top: 100px;
+}
+
+/*.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.title {
+    color: rgba(59, 223, 70, 1);
+    letter-spacing: 10px;
+    font-size: 50px;
+    font-weight: bold;
+}*/
+
+.new-todo {
+    font-family: cursive;
+    width: 200px;
+    height: 50px;
+    background-color: #F0D8DE;
+    border-radius: 6px;
+    display: inline-block;
+    align-items: center;
+}
+
+.st {
+    text-align: center;
+    vertical-align: middle;
+}
+
+
+.new-todo-input {
+    flex-grow: 1;
+    display: inline-block;
+    align-items: center;
+}
+
+.new-todo-input input {
+    width: 100%;
+    padding: 10px 0px;
+    font-size: 20px;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    color: hsl(233, 14%, 35%);
+    text-indent: 30px;
+}
+
+.new-todo-input form {
+    flex-grow: 1;
+    display: flex;
+}
+
+/*.top {*/
+/*    margin-top: 400px;*/
+/*}*/
+
+.new-todo-input input::placeholder {
+    font-family: cursive;
+    text-align: center;
+    color:hsl(233, 14%, 35%);
+}
+
+.button {
+    font-family: cursive;
+    position: relative;
+    left: 50%;
+    transform: translate(-50%, 0);
+    font-size: 20px;
+    width: 40%;
+    height: 40px;
+    background-color: #F0D8DE;
+    margin-top: 20px;
+    border-radius: 6px;
+    border-color: hsl(233, 14%, 35%);
+    color: hsl(233, 14%, 35%);
+    cursor: pointer;
+}
+
+.button_ac {
+    font-family: cursive;
+    position: relative;
+    left: 50%;
+    transform: translate(-50%, 0);
+    font-size: 20px;
+    width: 80%;
+    height: 40px;
+    background-color:  #F0D8DE;
+    margin-top: 20px;
+    border-radius: 6px;
+    color: hsl(233, 14%, 35%);
+    border-color: #923C53;
+    cursor: pointer;
+}
+
+
+a {
+    color: #923C53;
+}
+
+.demotable {
+    width: 100%;
+    height: 500px;
+   /* //border: 3px groove #923C53;*/
+    border-collapse: separate; /* По умолчанию, когда для каждой ячейки своя граница */
+    border-spacing: 7px 11px; /* Горизонтальное расстояние 7px и вертикальное 11px между ячейками */
+    text-align: center;
+    table-layout: auto; /* По умолчанию. Браузер отображает таблицу после того, как проанализирует размеры ячеек */
+}
+
+.demotable td, .demotable th {
+    border: 2px groove  #923C53;
+}
+
+.demotable tbody td {
+    empty-cells: hide; /* Фон и рамка в пустых ячейках отсутствуют */
+}
+
+
+.demotable th {
+    background-color:  #F0D8DE;
+}
+
+.col1 {
+    background-color:  #F0D8DE;
+}
+
+.col2 {
+    background-color:  #F0D8DE;
+}
+
+.check {
+    width: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left:auto;
+    margin-right:auto;
+}
+
+.check-mark {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 2px solid hsl(237, 14%, 26%);
+    transition: all 0.25s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.check-mark img {
+    visibility: hidden;
+}
+
+.check-mark.checked img, .check-mark:hover img {
+    visibility: visible;
+}
+
+.check-mark:hover {
+    background: rgb(187,92,155);
+    background: linear-gradient(0deg, rgba(187,92,155,1) 0%, rgba(240,237,239,1) 100%);
+}
+
+.check-mark.checked {
+    background: rgb(187,92,155);
+    background: linear-gradient(0deg, rgba(187,92,155,1) 0%, rgba(240,237,239,1) 100%);
+}
+
+.check-mark.checked img, .check-mark:hover img {
+    visibility: visible;
+}
+
+.movlist {
+    border: solid 3px;
+    border-radius: 6px;
+    border-color: #923C53;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+}
+
+.mov {
+    margin-left: 10px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-right: 10px;
+    /*margin-top: 5px;*/
+    /*margin-bottom: 5px;*/
+    font-family: cursive;
+    width: 30%;
+    height: 60px;
+    border: solid 2px;
+    border-color: #923C53;
+    background-color: #F0D8DE;
+    border-radius: 6px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.st {
+
+}
