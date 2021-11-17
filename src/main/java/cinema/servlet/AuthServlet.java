@@ -25,12 +25,9 @@ public class AuthServlet extends HttpServlet {
         PrintWriter writer = new PrintWriter(new OutputStreamWriter(
                 resp.getOutputStream(), StandardCharsets.UTF_8));
         User user = GSON.fromJson(req.getReader(), User.class);
-        System.out.println(user);
         try {
             User check = PsqlStore.instOf().findByEmailUser(user.getName());
-            System.out.println(check);
             if (check == null || !user.getPassword().equals(check.getPassword())) {
-                System.out.println("tut");
                 writer.print("400 Bad Request");
             } else {
                 HttpSession sc = req.getSession();

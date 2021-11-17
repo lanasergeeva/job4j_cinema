@@ -35,19 +35,6 @@ body {
     margin-top: 100px;
 }
 
-/*.header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.title {
-    color: rgba(59, 223, 70, 1);
-    letter-spacing: 10px;
-    font-size: 50px;
-    font-weight: bold;
-}*/
-
 .new-todo {
     font-family: cursive;
     width: 200px;
@@ -85,10 +72,6 @@ body {
     flex-grow: 1;
     display: flex;
 }
-
-/*.top {*/
-/*    margin-top: 400px;*/
-/*}*/
 
 .new-todo-input input::placeholder {
     font-family: cursive;
@@ -128,7 +111,6 @@ body {
     cursor: pointer;
 }
 
-
 a {
     color: #923C53;
 }
@@ -136,11 +118,10 @@ a {
 .demotable {
     width: 100%;
     height: 500px;
-   /* //border: 3px groove #923C53;*/
-    border-collapse: separate; /* По умолчанию, когда для каждой ячейки своя граница */
-    border-spacing: 7px 11px; /* Горизонтальное расстояние 7px и вертикальное 11px между ячейками */
+    border-collapse: separate;
+    border-spacing: 7px 11px;
     text-align: center;
-    table-layout: auto; /* По умолчанию. Браузер отображает таблицу после того, как проанализирует размеры ячеек */
+    table-layout: auto;
 }
 
 .demotable td, .demotable th {
@@ -148,7 +129,7 @@ a {
 }
 
 .demotable tbody td {
-    empty-cells: hide; /* Фон и рамка в пустых ячейках отсутствуют */
+    empty-cells: hide;
 }
 
 
@@ -231,6 +212,3 @@ a {
     justify-content: space-around;
 }
 
-.st {
-
-}

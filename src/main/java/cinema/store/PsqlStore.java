@@ -18,10 +18,6 @@ import java.util.List;
 import java.util.Properties;
 
 public class PsqlStore implements Store {
-    public static void main(String[] args) throws SQLException {
-        Ticket t1 = new Ticket(1, 2,  new Movie(1, "oo"), new User(1));
-        PsqlStore.instOf().add(t1);
-    }
 
     private static final PsqlStore INSTANCE = new PsqlStore();
 
@@ -53,7 +49,6 @@ public class PsqlStore implements Store {
         pool.setMaxIdle(10);
         pool.setMaxOpenPreparedStatements(100);
     }
-
 
     private static final class Lazy {
         private static final Store INST = new PsqlStore();
@@ -166,9 +161,7 @@ public class PsqlStore implements Store {
             } catch (Exception e) {
                 LOG.error("Exception in addTicket ", e);
             }
-        } /*catch (SQLException throwables) {
-            LOG.error("SQLException in addTicket ", throwables);
-        }*/
+        }
         return ticket;
     }
 
@@ -194,28 +187,4 @@ public class PsqlStore implements Store {
         }
         return tickets;
     }
-
-    @Override
-    public List<Ticket> findAllTickets() {
-        List<Ticket> tickets = new ArrayList<>();
-        //int mov = movie.getId();
-        try (Connection cn = pool.getConnection();
-             PreparedStatement ps = cn
-                     .prepareStatement("SELECT * FROM ticket")
-        ) {
-            try (ResultSet it = ps.executeQuery()) {
-                while (it.next()) {
-                    tickets.add(new Ticket(it.getInt("id"),
-                            it.getInt("row"),
-                            it.getInt("cell")
-                    ));
-                }
-            }
-        } catch (Exception e) {
-            LOG.error("Exception in findAllPosts ", e);
-        }
-        return tickets;
-    }
-
-
 }

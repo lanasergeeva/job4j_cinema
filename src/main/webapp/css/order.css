@@ -85,21 +85,11 @@ body {
     text-indent: 30px;
 }
 
-
-
-
-/*.top {*/
-/*    margin-top: 400px;*/
-/*}*/
-
 .new-todo-input input::placeholder {
     font-family: cursive;
     text-align: center;
     color:hsl(233, 14%, 35%);
 }
-
-
-
 
 .button {
     font-family: cursive;
@@ -132,8 +122,6 @@ body {
     color: hsl(233, 14%, 35%);
     cursor: pointer;
 }
-
-
 
 
 .button_ac {

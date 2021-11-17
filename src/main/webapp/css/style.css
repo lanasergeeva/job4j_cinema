@@ -35,19 +35,6 @@ body {
     margin-top: 200px;
 }
 
-/*.header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.title {
-    color: rgba(59, 223, 70, 1);
-    letter-spacing: 10px;
-    font-size: 50px;
-    font-weight: bold;
-}*/
-
 .new-todo {
     font-family: cursive;
     margin-left: auto;
@@ -59,7 +46,6 @@ body {
     border-radius: 6px;
     display: flex;
 }
-
 
 .new-todo-input {
     flex-grow: 1;
@@ -83,14 +69,10 @@ body {
     display: flex;
 }
 
-/*.top {*/
-/*    margin-top: 400px;*/
-/*}*/
-
 .new-todo-input input::placeholder {
     font-family: cursive;
     text-align: center;
-    color:hsl(233, 14%, 35%);
+    color: hsl(233, 14%, 35%);
 }
 
 .button {
@@ -109,8 +91,6 @@ body {
     cursor: pointer;
 }
 
-
-
 .button_ac {
     font-family: cursive;
     position: relative;
@@ -119,14 +99,13 @@ body {
     font-size: 20px;
     width: 80%;
     height: 40px;
-    background-color:  #F0D8DE;
+    background-color: #F0D8DE;
     margin-top: 20px;
     border-radius: 6px;
     color: hsl(233, 14%, 35%);
     border-color: #923C53;
     cursor: pointer;
 }
-
 
 a {
     color: #923C53;

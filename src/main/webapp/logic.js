@@ -1,8 +1,8 @@
 const seats = new Set;
 let movId = null;
 const indexSeats = new Set;
-var choose = new Array();
-var storeAr = new Array();
+var choose = [];
+var storeAr = [];
 
 
 /*информация сколько билетов выбрано пользователем*/
@@ -17,7 +17,7 @@ $(document).ready(function () {
 });
 
 /*
-заполняем выкупленные билеты
+заполняем выкупленные билеты в зале
  */
 function getTickets() {
     indexSeats.clear();
@@ -86,14 +86,12 @@ $(document).on("click", "#exitId", function () {
 
 
 /*
-Кладет все выбранные места в map по количеству. Значение массив
+Кладет все выбранные места в массив.
  */
 function getSeats() {
     while( storeAr.length > 0) {
         storeAr.pop();
     }
-    let s;
-    let ind = 1;
     for (let value of seats) {
         choose = value.toString().split(',');
         storeAr.push(choose[0]);
@@ -151,7 +149,6 @@ function getHall() {
             let index = i.toString() + "," + j.toString();
             let bool = indexSeats.has(index);
             const done = (bool === false) ? "check-mark" : "check-mark checked";
-            let jm = j;
             s += ` <td>`
                 + `<div class="check" id="${index}">`
                 + `<div class="${done}"><img src="img/icon-check.svg">`

@@ -19,7 +19,4 @@ public interface Store {
     List<Ticket> findAllTicketsByMovie(Movie movie);
 
     Movie findMovieById(int id);
-
-    List<Ticket> findAllTickets();
-
 }
