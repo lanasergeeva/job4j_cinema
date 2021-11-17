@@ -1,12 +1,11 @@
 const seats = new Set;
-const tick = new Map;
 let movId = null;
 const indexSeats = new Set;
 var choose = new Array();
 var storeAr = new Array();
 
-/*инфа сколько билетов в зале*/
 
+/*информация сколько билетов выбрано пользователем*/
 function sizeItem() {
     let ty = seats.size;
     document.getElementById('bc').innerHTML = "В корзине " + ty + " мест(а)";
@@ -21,6 +20,7 @@ $(document).ready(function () {
 заполняем выкупленные билеты
  */
 function getTickets() {
+    indexSeats.clear();
     $.ajax({
         type: 'GET',
         url: 'http://localhost:8080/cinema/tick.do',
@@ -31,18 +31,19 @@ function getTickets() {
             let cellTick = ticket.cell;
             let ind = rowTick.toString() + "," + cellTick.toString();
             indexSeats.add(ind);
-            getHall();
         }
+        getHall();
     });
 }
 
 /* выбор фильма*/
 $(document).on("click", ".st", function () {
     seats.clear();
-    tick.clear();
     var id = $(this).attr('id');
+    alert(id);
     setMovie(id);
     getTickets();
+    $('#nm').text(movName)
 });
 
 /*выбрать свободное место*/
@@ -52,47 +53,52 @@ $(document).on("click", ".check-mark", function () {
         seats.add(id);
         $(this).attr('class', 'check-mark checked');
         sizeItem();
-        alert(seats.size)
     }
 });
 
 /*отменить выбранное место*/
 $(document).on("click", ".check-mark.checked", function () {
     var idPar = $(this).parent().attr('id').toString();
-    alert(idPar);
-    alert(indexSeats.has(idPar));
-    alert(seats.size);
     if (!indexSeats.has(idPar)) {
         $(this).attr('class', 'check-mark');
         seats.delete(idPar);
-        alert(typeof (idPar));
         sizeItem();
     }
 });
 
-
+/*
+Переходим к оплате
+ */
 $(document).on("click", "#bc", function () {
+    localStorage.removeItem("arr");
     getSeats();
     localStorage.setItem("arr", JSON.stringify(storeAr));
     window.location.href = "http://localhost:8080/cinema/order.html";
 });
 
+/*
+выходим
+ */
+$(document).on("click", "#exitId", function () {
+
+    window.location.href = "http://localhost:8080/cinema/log.do";
+
+});
 
 
 /*
 Кладет все выбранные места в map по количеству. Значение массив
  */
 function getSeats() {
-    tick.clear();
+    while( storeAr.length > 0) {
+        storeAr.pop();
+    }
     let s;
     let ind = 1;
     for (let value of seats) {
         choose = value.toString().split(',');
-        alert(choose[0]);
-        alert(choose[1]);
         storeAr.push(choose[0]);
         storeAr.push(choose[1]);
-        tick.set(ind++, choose);
     }
 }
 
@@ -107,7 +113,6 @@ function setMovie(id) {
         dataType: 'text'
     }).done(function (data) {
         movId = id;
-        alert(id)
     });
 }
 
@@ -115,6 +120,7 @@ function setMovie(id) {
 Строит все дивы с фильмами
  */
 function getMovies() {
+    movName = null;
     seats.clear();
     $("#mt").empty();
     let ind = 1;
@@ -173,5 +179,3 @@ function getHall() {
     )
 };
 
-/*
-getMovies();*/

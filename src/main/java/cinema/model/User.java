@@ -14,6 +14,10 @@ public class User {
         this.phone = phone;
     }
 
+    public User(int id) {
+        this.id = id;
+    }
+
     public User(int id, String name, String email, String password, String phone) {
         this.id = id;
         this.name = name;
@@ -65,5 +69,16 @@ public class User {
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    @Override
+    public String toString() {
+        return "User{"
+                + "id=" + id
+                + ", name='" + name + '\''
+                + ", email='" + email + '\''
+                + ", password='" + password + '\''
+                + ", phone='" + phone + '\''
+                + '}';
     }
 }

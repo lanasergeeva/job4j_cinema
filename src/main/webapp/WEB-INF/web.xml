@@ -33,6 +33,10 @@
     <servlet-name>TicketServlet</servlet-name>
     <servlet-class>cinema.servlet.TicketServlet</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>LogServlet</servlet-name>
+    <servlet-class>cinema.servlet.LogServlet</servlet-class>
+  </servlet>
 
   <servlet-mapping>
     <servlet-name>MovieServlet</servlet-name>
@@ -53,6 +57,10 @@
   <servlet-mapping>
     <servlet-name>TicketServlet</servlet-name>
     <url-pattern>/tick.do</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>LogServlet</servlet-name>
+    <url-pattern>/log.do</url-pattern>
   </servlet-mapping>
 
 </web-app>

@@ -24,10 +24,9 @@ function checkUser() {
         }), dataType: 'text'
     }).done(function (data) {
         if (data !== "400 Bad Request") {
-            localStorage.setItem("user", name);
             window.location.href = "http://localhost:8080/cinema/index.html";
         } else {
-            alert("You entered incorrect login or password");
+            alert("You entered incorrect email or password");
             document.getElementById('email').value='';
             document.getElementById('password').value='';
         }

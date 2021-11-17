@@ -8,18 +8,21 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.BufferedReader;
-import java.io.FileReader;
 import java.io.InputStreamReader;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 import java.util.Properties;
 
 public class PsqlStore implements Store {
+    public static void main(String[] args) throws SQLException {
+        Ticket t1 = new Ticket(1, 2,  new Movie(1, "oo"), new User(1));
+        PsqlStore.instOf().add(t1);
+    }
+
     private static final PsqlStore INSTANCE = new PsqlStore();
 
     private static final Logger LOG = LoggerFactory.getLogger(PsqlStore.class.getName());
@@ -83,7 +86,7 @@ public class PsqlStore implements Store {
     }
 
     @Override
-    public User findByEmailUser(String name) {
+    public User findByEmailUser(String name) throws SQLException {
         User rsl = null;
         try (Connection cn = pool.getConnection();
              PreparedStatement ps = cn.prepareStatement("select * from users where email like ?",
@@ -146,7 +149,7 @@ public class PsqlStore implements Store {
     }
 
     @Override
-    public Ticket add(Ticket ticket) {
+    public Ticket add(Ticket ticket) throws SQLException {
         try (Connection cn = pool.getConnection();
              PreparedStatement ps = cn
                      .prepareStatement("INSERT INTO ticket(row, cell, users_id, movies_id) VALUES (?, ?, ?, ?)",
@@ -163,9 +166,9 @@ public class PsqlStore implements Store {
             } catch (Exception e) {
                 LOG.error("Exception in addTicket ", e);
             }
-        } catch (SQLException throwables) {
+        } /*catch (SQLException throwables) {
             LOG.error("SQLException in addTicket ", throwables);
-        }
+        }*/
         return ticket;
     }
 
@@ -213,4 +216,6 @@ public class PsqlStore implements Store {
         }
         return tickets;
     }
+
+
 }

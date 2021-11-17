@@ -13,6 +13,7 @@ import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.nio.charset.StandardCharsets;
+import java.sql.SQLException;
 
 public class AuthServlet extends HttpServlet {
     private static final Gson GSON = new GsonBuilder().create();
@@ -24,13 +25,20 @@ public class AuthServlet extends HttpServlet {
         PrintWriter writer = new PrintWriter(new OutputStreamWriter(
                 resp.getOutputStream(), StandardCharsets.UTF_8));
         User user = GSON.fromJson(req.getReader(), User.class);
-        User check = PsqlStore.instOf().findByEmailUser(user.getName());
-        if (!user.getPassword().equals(check.getPassword())) {
+        System.out.println(user);
+        try {
+            User check = PsqlStore.instOf().findByEmailUser(user.getName());
+            System.out.println(check);
+            if (check == null || !user.getPassword().equals(check.getPassword())) {
+                System.out.println("tut");
+                writer.print("400 Bad Request");
+            } else {
+                HttpSession sc = req.getSession();
+                sc.setAttribute("user", check);
+                writer.print(check);
+            }
+        } catch (SQLException e) {
             writer.print("400 Bad Request");
-        } else {
-            HttpSession sc = req.getSession();
-            sc.setAttribute("user", check);
-            writer.print(check);
         }
         writer.flush();
     }

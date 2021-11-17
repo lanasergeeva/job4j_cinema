@@ -15,6 +15,7 @@ import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.nio.charset.StandardCharsets;
+import java.sql.SQLException;
 
 public class TicketServlet extends HttpServlet {
     private static final Gson GSON = new GsonBuilder().create();
@@ -32,8 +33,12 @@ public class TicketServlet extends HttpServlet {
         System.out.println(movie);
         ticket.setMovie(movie);
         ticket.setUser(user);
-        PsqlStore.instOf().add(ticket);
-        writer.print("200 OK");
+        try {
+            PsqlStore.instOf().add(ticket);
+            writer.print("200 OK");
+        } catch (SQLException e) {
+            writer.print("400 Bad Request");
+        }
         writer.flush();
     }
 
@@ -42,8 +47,6 @@ public class TicketServlet extends HttpServlet {
         resp.setContentType("application/json; charset=utf-8");
         OutputStream output = resp.getOutputStream();
         Movie movie = (Movie) req.getSession().getAttribute("movie");
-        //здесь надо муви
-        //User id = PsqlStore.instOf().findByEmailUser(user.getName());
         String json = GSON.toJson(PsqlStore.instOf().findAllTicketsByMovie(movie));
         output.write(json.getBytes(StandardCharsets.UTF_8));
         output.flush();

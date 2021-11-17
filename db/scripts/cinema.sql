@@ -23,5 +23,6 @@ id SERIAL PRIMARY KEY,
 row INT NOT NULL,
 cell INT NOT NULL,
 users_id INT NOT NULL REFERENCES users(id),
-movies_id INT NOT NULL REFERENCES movies(id)
+movies_id INT NOT NULL REFERENCES movies(id),
+CONSTRAINT uniqs UNIQUE (movies_id, row, cell)
 );

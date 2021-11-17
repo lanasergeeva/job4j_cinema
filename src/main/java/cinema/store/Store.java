@@ -10,11 +10,11 @@ import java.util.List;
 public interface Store {
     User addUser(User user) throws SQLException;
 
-    User findByEmailUser(String name);
+    User findByEmailUser(String name) throws SQLException;
 
     List<Movie> findAllMovies();
 
-    Ticket add(Ticket ticket);
+    Ticket add(Ticket ticket) throws SQLException;
 
     List<Ticket> findAllTicketsByMovie(Movie movie);
 
