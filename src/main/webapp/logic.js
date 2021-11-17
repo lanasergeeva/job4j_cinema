@@ -40,7 +40,6 @@ function getTickets() {
 $(document).on("click", ".st", function () {
     seats.clear();
     var id = $(this).attr('id');
-    alert(id);
     setMovie(id);
     getTickets();
     $('#nm').text(movName)

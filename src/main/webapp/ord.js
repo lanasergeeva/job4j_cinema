@@ -28,10 +28,7 @@ function orderTicket(array) {
 }
 
 $(document).on("click", ".paybut", function () {
-    alert('pay');
     var id = $(this).attr('id');
-    alert(typeof (id));
-    alert(id);
     var array = id.toString().split(',');
     orderTicket(array)
 });
