@@ -81,7 +81,7 @@ public class PsqlStore implements Store {
     }
 
     @Override
-    public User findByEmailUser(String name) throws SQLException {
+    public User findByEmailUser(String name) {
         User rsl = null;
         try (Connection cn = pool.getConnection();
              PreparedStatement ps = cn.prepareStatement("select * from users where email like ?",
